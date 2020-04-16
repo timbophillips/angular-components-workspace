@@ -59,7 +59,7 @@ export class FilteredSelectComponent implements OnInit, AfterViewInit {
   @Input() borderStyle = '1px solid #999';
 
   // produce a single chosen option as output
-  @Output() result = new EventEmitter<option>();
+  @Output() chosenOption = new EventEmitter<option>();
 
   // observables used in the angular template
   filteredOptions: Observable<option[]>;
@@ -96,14 +96,14 @@ export class FilteredSelectComponent implements OnInit, AfterViewInit {
     this.changeFilterText = fromEvent(this.filterInput, 'keyup').pipe(
       // if the down arrow is hit then give the focus to the selectBox control
       tap((e) =>
-        (e as KeyboardEvent).keyCode == 40 ? this.selectBox.focus() : null
+        (e as KeyboardEvent).key === 'ArrowDown' ? this.selectBox.focus() : null
       ),
       // ignore enter key and down arrow key from here onwards
       // (enter key dealth with elsewhere)
       filter(
         (e) =>
-          (e as KeyboardEvent).keyCode !== 13 &&
-          (e as KeyboardEvent).keyCode !== 40
+          (e as KeyboardEvent).key !== 'Enter' &&
+          (e as KeyboardEvent).key !== 'ArrowDown'
       ),
       // prevent to rapid a change
       debounceTime(100),
@@ -185,13 +185,13 @@ export class FilteredSelectComponent implements OnInit, AfterViewInit {
       map((x) =>
         // get the list of groups by mapping the group field of the options
         // and then deleting duplicates using Array.from(new Set(_original_array_))
-        Array.from(new Set(x.map((option) => option.group)))
+        Array.from(new Set(x.map((y) => y.group)))
           // for each one of these groups create a groupedOptions object
           .map((group) => ({
             // with the group name
             groupName: group,
             // and an appropriately selected (filtered) group of options
-            options: x.filter((option) => option.group == group),
+            options: x.filter((y) => y.group === group),
           }))
       )
     );
@@ -201,22 +201,22 @@ export class FilteredSelectComponent implements OnInit, AfterViewInit {
       // by clicking an item the selectBox or hitting enter in
       // either the filterInput or the selectBox
       fromEvent(this.selectBox, 'keyup').pipe(
-        filter((e) => (e as KeyboardEvent).keyCode == 13)
+        filter((e) => (e as KeyboardEvent).key === 'Enter')
       ),
       fromEvent(this.selectBox, 'click'),
       fromEvent(this.filterInput, 'keyup').pipe(
-        filter((e) => (e as KeyboardEvent).keyCode == 13),
+        filter((e) => (e as KeyboardEvent).key === 'Enter'),
         mapTo(true)
       )
     ).pipe(
       // transform the output into an option type variable
-      map((option) => ({
+      map(() => ({
         text: this.selectBox.options[this.selectBox.selectedIndex].text,
         id: this.selectBox.options[this.selectBox.selectedIndex].value,
         group: this.selectBox.options[this.selectBox.selectedIndex].label,
       })),
-      // emit the result for the parent HTML control to read
-      tap((x) => this.result.emit(x))
+      // emit the chosenOption for the parent HTML control to read
+      tap((x) => this.chosenOption.emit(x))
 
     );
 
