@@ -213,7 +213,7 @@ export class FilteredSelectComponent implements OnInit, AfterViewInit {
       map(() => ({
         text: this.selectBox.options[this.selectBox.selectedIndex].text,
         id: this.selectBox.options[this.selectBox.selectedIndex].value,
-        group: this.selectBox.options[this.selectBox.selectedIndex].label,
+        // group: this.selectBox.options[this.selectBox.selectedIndex].label,
       })),
       // emit the chosenOption for the parent HTML control to read
       tap((x) => this.chosenOption.emit(x))
