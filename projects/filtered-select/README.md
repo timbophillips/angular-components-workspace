@@ -1,24 +1,54 @@
-# FilteredSelect
+# FilterSelectDev
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+Ultra simple clone of Select2 written in [pure Angular 9](https://angular.io)
+No additional dependencies
 
-## Code scaffolding
 
-Run `ng generate component component-name --project filtered-select` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project filtered-select`.
-> Note: Don't forget to add `--project filtered-select` or else it will be added to the default project in your `angular.json` file. 
+## Usage
 
-## Build
+[StackBlitz example](https://stackblitz.com/edit/filtered-select-example-usage)
 
-Run `ng build filtered-select` to build the project. The build artifacts will be stored in the `dist/` directory.
+### CLI 
+`npm install --save filtered-select`
 
-## Publishing
+### In `app.module.ts`:
+`import { FilteredSelectModule } from "filtered-select";`
+`...
+`@NgModule({`
+`  // Added FilteredSelectModule`
+` imports: [..., FilteredSelectModule],`
+`...`
 
-After building your library with `ng build filtered-select`, go to the dist folder `cd dist/filtered-select` and run `npm publish`.
+### In Angular HTML Template
+`<filtered-select`
+`    [options]="options"`
+`    [lines]="8"`
+`    [backgroundColor]="'white'"`
+`    (chosenOption)="onResult($event)"`
+`    [grouped]=true`
+`  >`
+`  </filtered-select>`
 
-## Running unit tests
+### In Angular component TS file
+`import { option } from 'filtered-select';`
 
-Run `ng test filtered-select` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`const options: option[] = [`
+`  { text: 'Tim', id: 'TP', group: 'Parents' },`
+`  { text: 'Ben', id: 'BP', group: 'Parents' },`
+`  { text: 'Katie', id: 'KP', group: 'Parents' },`
+`  { text: 'John', id: 'JP', group: 'Grandparents' },`
+`  { text: 'Sue', id: 'SP', group: 'Grandparents' },`
+`  { text: 'Sarah', id: 'SR', group: 'Parents' },`
+`  { text: 'Claire', id: 'CB', group: 'Parents' },`
+`  { text: 'Drew', id: 'AM', group: 'Parents' },`
+`  { text: 'Molly', id: 'MP', group: 'Kids' },`
+`  { text: 'Lucy', id: 'LP', group: 'Kids' },`
+`  { text: 'Jess', id: 'JP2', group: 'Kids' },`
+`  { text: 'George', id: 'GP', group: 'Kids' },`
+`  { text: 'Daisy', id: 'DM', group: 'Kids' },`
+`  { text: 'Benny', id: 'BP', group: 'Nicknames' },`
+`  { text: 'Timbo', id: 'TP', group: 'Nicknames' },`
+`  { text: 'Richo', id: 'SR', group: 'Nicknames' },`
+`];`
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
