@@ -1,0 +1,45 @@
+<div class="component">
+  <div>
+    <select #fakeInput
+      ><option hidden="true">{{ chosenText | async }}</option>
+    </select>
+  </div>
+  <div class="dropdown">
+    <div
+      class="inner"
+      [hidden]="!(active | async)"
+      [ngStyle]="{ 'background-color': backgroundColor, border: borderStyle }"
+    >
+      <input #filterInput type="text" placeholder="search" />
+      <!-- this select is used if we are not grouping by option groups -->
+      <select *ngIf="!grouped" size="{{ lines }}" #selectBox>
+        <option
+          *ngFor="let option of filteredOptions | async; index as i"
+          [value]="option.id"
+          [selected]="option.selected"
+          [label]="option.group || ''"
+          >{{ option.text }}</option
+        >
+      </select>
+      <!-- this select is used if we are grouping by option groups -->
+      <select *ngIf="grouped" size="{{ lines }}" #selectBox>
+        <optgroup
+          *ngFor="
+            let groupedOptions of filteredGroupedOptions | async;
+            index as i
+          "
+          label="{{ groupedOptions.groupName }}"
+        >
+          <option
+            *ngFor="let option of groupedOptions.options; index as i"
+            [value]="option.id"
+            [selected]="option.selected"
+            [label]="option.group || ''"
+
+            >{{ option.text }}</option
+          ></optgroup
+        >
+      </select>
+    </div>
+  </div>
+</div>
