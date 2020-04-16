@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { FilteredSelectComponent } from './filtered-select.component';
-
-
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [FilteredSelectComponent],
-  imports: [
+  imports: [ CommonModule
   ],
   exports: [FilteredSelectComponent]
 })
