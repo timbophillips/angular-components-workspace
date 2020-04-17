@@ -1,0 +1,9 @@
+div {
+  margin: 5px;
+  padding: 5px;
+  display: block;
+}
+label {
+  width: 100%;
+  display: block;
+}

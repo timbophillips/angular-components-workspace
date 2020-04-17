@@ -1,0 +1,47 @@
+<div>
+  <label
+    >These are just to surround the filtered select control to make it look
+    real</label>
+  <input type="text" />
+</div>
+<div>
+  <label>Here is the ng9 filtered select control</label>
+  <filtered-select
+    [options]="options"
+    [lines]="8"
+    [backgroundColor]="'white'"
+    (chosenOption)="onResult($event)"
+    [grouped]=true
+  >
+  </filtered-select>
+</div>
+<div>
+  <label>More controls just for effect</label>
+  <select size="4"
+    ><option>one</option
+    ><option>two</option
+    ><option>three</option
+    ><option>four</option
+    ><option>five</option
+    ><option>six</option
+    ><option>seven</option>
+  </select>
+</div>
+<div>
+  <label>The competition from HTML5</label>
+  <select
+    ><option>This is what a normal select control will look like</option>    ><option>one</option
+      ><option>two</option
+      ><option>three</option
+      ><option>four</option
+      ><option>five</option
+      ><option>six</option
+      ><option>seven</option>
+
+  </select>
+</div>
+
+<div>
+  <label>Below is the result emitted by the ng9 filtered select control</label>
+    <code>{{ selectedOption | json }}</code>
+</div>
