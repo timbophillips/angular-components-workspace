@@ -1,4 +1,4 @@
-# FilterSelectDev
+# Filtered Select for Angular
 
 Ultra simple clone of Select2 written in [pure Angular 9](https://angular.io)
 No additional dependencies
@@ -12,7 +12,7 @@ No additional dependencies
 `npm install --save filtered-select`
 
 ### In `app.module.ts`:
-`import { FilteredSelectModule } from "filtered-select";`
+`import { FilteredSelectModule } from "filtered-select";
 `...
 `@NgModule({`
 `  // Added FilteredSelectModule`
