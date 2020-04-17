@@ -3,6 +3,8 @@
 Ultra simple clone of Select2 written in [pure Angular 9](https://angular.io)
 No additional dependencies
 
+https://github.com/timbophillips/angular-components-workspace
+https://www.npmjs.com/package/filtered-select
 
 ## Usage
 
