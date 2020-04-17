@@ -1,4 +1,4 @@
-# Toolbox of Angular Components Services Directives Pipes
+# Toolbox of our custom made Angular Components
 
 ## Filtered Select for Angular
 
