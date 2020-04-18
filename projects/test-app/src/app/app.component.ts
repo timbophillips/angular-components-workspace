@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { option } from 'filtered-select';
+import { option } from '../../../filtered-select/src/lib/filtered-select.component';
 
 const options: option[] = [
   { text: 'Tim', id: 'TP', group: 'Parents' },
