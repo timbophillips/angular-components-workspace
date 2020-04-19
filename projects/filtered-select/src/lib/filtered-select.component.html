@@ -1,7 +1,7 @@
 <div class="component">
   <div>
     <select #fakeInput
-      ><option hidden="true">{{ chosenText | async }}</option>
+      ><option value="{{ chosenText | async }}">{{ chosenText | async }}</option>
     </select>
   </div>
   <div class="dropdown">
