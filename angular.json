@@ -14,7 +14,7 @@
           "options": {
             "tsConfig": "projects/filtered-select/tsconfig.lib.json",
             "project": "projects/filtered-select/ng-package.json"
-                 },
+          },
           "configurations": {
             "production": {
               "tsConfig": "projects/filtered-select/tsconfig.lib.prod.json"
@@ -102,8 +102,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "test-app:build",
-            "port": 4519
+            "browserTarget": "test-app:build"
           },
           "configurations": {
             "production": {
@@ -160,6 +159,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "filtered-select"
 }
