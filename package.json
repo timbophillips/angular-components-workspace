@@ -1,6 +1,6 @@
 {
   "name": "angular-components-workspace",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 6200 -o",
