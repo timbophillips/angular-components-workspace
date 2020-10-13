@@ -1,6 +1,6 @@
 # Filtered Select for Angular
 
-Ultra simple clone of Select2 written in [pure Angular 9](https://angular.io)
+Ultra simple clone of Select2 written in [pure Angular 10](https://angular.io)
 No additional dependencies
 
 https://github.com/timbophillips/angular-components-workspace/tree/master/projects/filtered-select
