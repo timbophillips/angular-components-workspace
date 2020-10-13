@@ -7,7 +7,7 @@
 <div>
   <label>Here is the ng9 filtered select control</label>
   <filtered-select
-    [options]="options"
+    [options]="options$ | async"
     [lines]="8"
     [backgroundColor]="'white'"
     (chosenOption)="onResult($event)"
@@ -42,6 +42,15 @@
 </div>
 
 <div>
+  <button (click)="modifyOptions()">Pop !</button>
+</div>
+
+<div>
   <label>Below is the result emitted by the ng9 filtered select control</label>
     <code>{{ selectedOption | json }}</code>
+</div>
+
+<div>
+  <label>The options array</label>
+    <code>{{ options$ | async | json }}</code>
 </div>

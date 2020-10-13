@@ -9,7 +9,6 @@ import {
   ChangeDetectionStrategy,
   AfterViewInit,
   ChangeDetectorRef,
-  OnChanges,
 } from '@angular/core';
 import { Observable, of, fromEvent, merge } from 'rxjs';
 import {
@@ -40,10 +39,10 @@ type groupedOptions = { groupName: string; options: option[] };
   styleUrls: ['./filtered-select.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FilteredSelectComponent
-  implements OnInit, AfterViewInit, OnChanges {
+export class FilteredSelectComponent implements AfterViewInit {
   // use the angular decorator to get the controls within the template
-  @ViewChild('filterInput') filterInputElementRef: ElementRef;
+  @ViewChild('filterInput')
+  filterInputElementRef: ElementRef;
   @ViewChild('selectBox') selectBoxElementRef: ElementRef;
   @ViewChild('fakeInput') fakeInputElementRef: ElementRef;
 
@@ -85,13 +84,6 @@ export class FilteredSelectComponent
   optionChosen: Observable<option>;
 
   constructor(private cdr: ChangeDetectorRef) {}
-
-  ngOnInit() {}
-
-  // this will "re-start" the whole process if the parent changes the inputs
-  ngOnChanges() {
-    this.ngAfterViewInit();
-  }
 
   ngAfterViewInit() {
     // use the @ViewChild obatined ElementRef to get the controls

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { option } from '../../../filtered-select/src/lib/filtered-select.component';
 
 const options: option[] = [
@@ -24,11 +25,18 @@ const options: option[] = [
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  options = options;
+  options$: BehaviorSubject<option[]> = new BehaviorSubject(options);
   selectedOption: option;
   onResult(id: option) {
     this.selectedOption = id;
+  }
+  modifyOptions() {
+    const newOption: option = { text: 'Filipe', id: 'FD', group: 'Parents' };
+    options.push(newOption);
+    this.options$.next(options);
+    console.log('modifyOptions');
   }
 }
